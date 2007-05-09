@@ -4,12 +4,12 @@
 %define LIBMAJ 5
 %define libname %mklibname %name %LIBMAJ
 %define pyver %(python -V 2>&1 | cut -f2 -d" " | cut -f1,2 -d".")
-%define release %mkrel 2
+%define release %mkrel 1
 
 
 Summary:	GUI independent C++ database application libraries	
 Name:		hk_classes
-Version: 	0.8.2
+Version: 	0.8.3
 Release: 	%release
 License:	GPL
 Group:		Databases
@@ -17,7 +17,7 @@ Source:		http://hk-classes.sourceforge.net/hk_classes-%{version}.tar.bz2
 # python path for x86_64
 Patch0:		hk_classes-pythonpath-x86_64.patch
 Url:		http://hk-classes.sourceforge.net
-BuildRoot:	%_tmppath/%name-%version-root
+BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 BuildRequires:	mysql-devel 
 BuildRequires:  postgresql-devel 
@@ -32,7 +32,7 @@ BuildRequires:  firebird-devel
 %endif
 BuildRequires:  chrpath 
 
-Requires: 	%{libname} = %{version}-%{release}
+#Requires: 	%{libname} = %{version}-%{release}
 
 %description
 
