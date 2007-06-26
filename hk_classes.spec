@@ -1,8 +1,8 @@
-%define LIBMAJ 5
+%define LIBMAJ 15
 %define libname %mklibname %name %LIBMAJ
 %define develname %mklibname %name -d
 %define pyver %(python -V 2>&1 | cut -f2 -d" " | cut -f1,2 -d".")
-%define release %mkrel 1
+%define release %mkrel 2
 
 Summary:	GUI independent C++ database application libraries	
 Name:		hk_classes
@@ -50,6 +50,7 @@ Python scripting support for hk_classes.
 %package	-n %{libname}
 Summary:  	Libraries for hk_classes applications
 Group: 		System/Libraries
+Obsoletes:	%mklibname %name 5
 
 %description -n %{libname}
 
