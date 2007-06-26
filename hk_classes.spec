@@ -1,11 +1,8 @@
-# THIS PACKAGE IS HOSTED AT MANDRIVA SVN
-# PLEASE DO NOT UPLOAD DIRECTLY BEFORE COMMIT
-
 %define LIBMAJ 5
 %define libname %mklibname %name %LIBMAJ
+%define develname %mklibname %name -d
 %define pyver %(python -V 2>&1 | cut -f2 -d" " | cut -f1,2 -d".")
 %define release %mkrel 1
-
 
 Summary:	GUI independent C++ database application libraries	
 Name:		hk_classes
@@ -58,13 +55,14 @@ Group: 		System/Libraries
 
 Hk_classes libraries for command-line scripts and application development.
 
-%package	-n %{libname}-devel
+%package	-n %{develname}
 Summary:  	Development files for hk_classes applications
 Group: 		Development/Databases
 Requires: 	%{libname} = %{version}-%{release}
 Provides:	hk_classes-devel = %{version}
+Obsoletes:	%{libname}-devel
 
-%description -n %{libname}-devel
+%description -n %{develname}
 
 Hk_classes header files for application development.
 
@@ -182,12 +180,9 @@ rm -fr %buildroot
 %{_libdir}/%{name}/drivers/libhk_xbasedriver.so*
 %endif
 
-%files -n %{libname}-devel
+%files -n %{develname}
 %defattr(-,root,root)
 %dir %{_includedir}/%{name}
 %{_includedir}/%{name}/*.h
 %{_libdir}/%{name}/*.la
 %{_libdir}/%{name}/drivers/*.la
-
-
-
