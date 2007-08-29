@@ -149,13 +149,13 @@ rm -fr %buildroot
 %{_bindir}/hk_report
 %{_bindir}/hk_dbcopy
 %config(noreplace) %{_sysconfdir}/hk_classes.conf
-%{_mandir}/man1/hk_actionquery.1man.bz2
-%{_mandir}/man1/hk_exportcsv.1man.bz2
-%{_mandir}/man1/hk_exporthtml.1man.bz2
-%{_mandir}/man1/hk_exportxml.1man.bz2
-%{_mandir}/man1/hk_importcsv.1man.bz2
-%{_mandir}/man1/hk_report.1man.bz2
-%{_mandir}/man1/hk_dbcopy.1man.bz2
+%{_mandir}/man1/hk_actionquery.1man*
+%{_mandir}/man1/hk_exportcsv.1man*
+%{_mandir}/man1/hk_exporthtml.1man*
+%{_mandir}/man1/hk_exportxml.1man*
+%{_mandir}/man1/hk_importcsv.1man*
+%{_mandir}/man1/hk_report.1man*
+%{_mandir}/man1/hk_dbcopy.1man*
 
 %files -n python-%{name}
 %defattr(-,root,root)
