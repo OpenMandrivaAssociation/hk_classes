@@ -1,8 +1,7 @@
 %define LIBMAJ 15
 %define libname %mklibname %name %LIBMAJ
 %define develname %mklibname %name -d
-%define pyver %(python -V 2>&1 | cut -f2 -d" " | cut -f1,2 -d".")
-%define release %mkrel 2
+%define release %mkrel 3
 
 Summary:	GUI independent C++ database application libraries	
 Name:		hk_classes
@@ -11,8 +10,6 @@ Release: 	%release
 License:	GPL
 Group:		Databases
 Source:		http://hk-classes.sourceforge.net/hk_classes-%{version}.tar.bz2
-# python path for x86_64
-Patch0:		hk_classes-pythonpath-x86_64.patch
 Url:		http://hk-classes.sourceforge.net
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
@@ -28,8 +25,7 @@ BuildRequires:  sqlite3-devel
 BuildRequires:  firebird-devel
 %endif
 BuildRequires:  chrpath 
-
-#Requires: 	%{libname} = %{version}-%{release}
+Requires: 	%{libname} = %{version}-%{release}
 
 %description
 
@@ -42,6 +38,7 @@ firebird support is not available for x86_64
 %package	-n python-%{name}
 Summary:  	Python support for hk_classes
 Group: 		Development/Python
+%py_requires -d
 
 %description -n python-%{name}
 
@@ -51,6 +48,8 @@ Python scripting support for hk_classes.
 Summary:  	Libraries for hk_classes applications
 Group: 		System/Libraries
 Obsoletes:	%mklibname %name 5
+Conflicts:	%develname < 0.8.3-3
+Conflicts:	%{mklibname -d %name 5}
 
 %description -n %{libname}
 
@@ -61,7 +60,9 @@ Summary:  	Development files for hk_classes applications
 Group: 		Development/Databases
 Requires: 	%{libname} = %{version}-%{release}
 Provides:	hk_classes-devel = %{version}
-Obsoletes:	%{libname}-devel
+Obsoletes:	%mklibname -d %name 15
+Conflicts:	%libname < 0.8.3-3
+Conflicts:	%mklibname %name 5
 
 %description -n %{develname}
 
@@ -69,7 +70,6 @@ Hk_classes header files for application development.
 
 %prep
 %setup -q -n %{name}-%{version}
-#%patch0
 
 %build
 %configure --with-xbase-libdir=%{_libdir}
@@ -159,31 +159,17 @@ rm -fr %buildroot
 
 %files -n python-%{name}
 %defattr(-,root,root)
-%{_libdir}/python%{pyver}/site-packages/*
+%python_sitearch/*
 
 %files -n %{libname}
 %defattr(-,root,root)
 %dir %{_libdir}/%{name}
-%dir %{_libdir}/%{name}/drivers
-%{_libdir}/%{name}/libhk_classes.so*
-%{_libdir}/%{name}/drivers/libhk_mysqldriver.so*
-%{_libdir}/%{name}/drivers/libhk_odbcdriver.so*
-%{_libdir}/%{name}/drivers/libhk_postgresdriver.so*
-%{_libdir}/%{name}/drivers/libhk_sqlite?driver.so*
-%{_libdir}/%{name}/drivers/libhk_paradoxdriver.so*
-%{_libdir}/%{name}/drivers/libhk_mdbdriver.so*
-%{_libdir}/%{name}/drivers/libhk_dbasedriver.so*
-%{_sysconfdir}/ld.so.conf.d/hk_classes.conf
-# TODO: remove the following cond
-%ifarch x86_64
-%else
-%{_libdir}/%{name}/drivers/libhk_firebirddriver.so*
-%{_libdir}/%{name}/drivers/libhk_xbasedriver.so*
-%endif
+%{_libdir}/%{name}/libhk_classes.so.%{LIBMAJ}*
+%{_libdir}/%{name}/drivers
 
 %files -n %{develname}
 %defattr(-,root,root)
 %dir %{_includedir}/%{name}
 %{_includedir}/%{name}/*.h
-%{_libdir}/%{name}/*.la
-%{_libdir}/%{name}/drivers/*.la
+%{_libdir}/%{name}/libhk_classes.la
+%{_libdir}/%{name}/libhk_classes.so
