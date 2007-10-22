@@ -163,6 +163,7 @@ rm -fr %buildroot
 
 %files -n %{libname}
 %defattr(-,root,root)
+%{_sysconfdir}/ld.so.conf.d/hk_classes.conf
 %dir %{_libdir}/%{name}
 %{_libdir}/%{name}/libhk_classes.so.%{LIBMAJ}*
 %{_libdir}/%{name}/drivers
