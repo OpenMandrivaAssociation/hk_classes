@@ -11,6 +11,7 @@ License:	GPL
 Group:		Databases
 Source:		http://hk-classes.sourceforge.net/hk_classes-%{version}.tar.bz2
 Url:		http://hk-classes.sourceforge.net
+BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 BuildRequires:	mysql-devel 
 BuildRequires:  postgresql-devel 
