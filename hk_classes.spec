@@ -28,7 +28,6 @@ BuildRequires:  chrpath
 Requires: 	%{libname} = %{version}-%{release}
 
 %description
-
 Hk_classes is a set of GUI independent C++ libraries which allow the rapid 
 development of database applications and includes command line tools to use 
 hk_classes in scripts.
@@ -41,7 +40,6 @@ Group: 		Development/Python
 %py_requires -d
 
 %description -n python-%{name}
-
 Python scripting support for hk_classes.
 
 %package	-n %{libname}
@@ -52,7 +50,6 @@ Conflicts:	%develname < 0.8.3-3
 Conflicts:	%{mklibname -d %name 5}
 
 %description -n %{libname}
-
 Hk_classes libraries for command-line scripts and application development.
 
 %package	-n %{develname}
@@ -65,7 +62,6 @@ Conflicts:	%libname < 0.8.3-3
 Conflicts:	%mklibname %name 5
 
 %description -n %{develname}
-
 Hk_classes header files for application development.
 
 %prep
