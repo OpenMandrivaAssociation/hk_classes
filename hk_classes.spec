@@ -121,7 +121,9 @@ echo "%_libdir/%name" >  %buildroot/%_sysconfdir/ld.so.conf.d/%name.conf
 
 %post -n %{libname}
 grep -q "^/usr/lib/%{name}$" /etc/ld.so.conf || echo "/usr/lib/%{name}" >> /etc/ld.so.conf
+%if %mdkversion < 200900
 /sbin/ldconfig
+%endif
 
 %postun -n %{libname}
 if [ "$1" = "0" ]; then
@@ -129,7 +131,9 @@ if [ "$1" = "0" ]; then
     grep -v -e "/usr/lib/%{name}" /etc/ld.so.conf > /etc/ld.so.conf.new
     mv -f /etc/ld.so.conf.new /etc/ld.so.conf
 fi
+%if %mdkversion < 200900
 /sbin/ldconfig
+%endif
 
 %clean
 rm -fr %buildroot
