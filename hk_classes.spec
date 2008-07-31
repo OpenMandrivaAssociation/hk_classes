@@ -10,6 +10,7 @@ Release: 	%release
 License:	GPL
 Group:		Databases
 Source:		http://hk-classes.sourceforge.net/hk_classes-%{version}.tar.bz2
+Patch0:		hk_classes-0.8.3-gcc43.patch
 Url:		http://hk-classes.sourceforge.net
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
@@ -66,12 +67,14 @@ Hk_classes header files for application development.
 
 %prep
 %setup -q -n %{name}-%{version}
+%patch0 -p1
 
 %build
-%configure --with-xbase-libdir=%{_libdir}
+%configure2_5x --with-xbase-libdir=%{_libdir}
 %make
 
 %install
+rm -fr %buildroot
 %makeinstall_std
 
 # (sb) create a default config file
