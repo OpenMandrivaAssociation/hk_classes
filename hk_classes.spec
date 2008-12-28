@@ -11,6 +11,7 @@ License:	GPL
 Group:		Databases
 Source:		http://hk-classes.sourceforge.net/hk_classes-%{version}.tar.bz2
 Patch0:		hk_classes-0.8.3-gcc43.patch
+Patch1:		hk_classes-0.8.3-fix-str-fmt.patch
 Url:		http://hk-classes.sourceforge.net
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildRequires:	fontconfig-devel
@@ -68,6 +69,7 @@ Hk_classes header files for application development.
 %prep
 %setup -q -n %{name}-%{version}
 %patch0 -p1
+%patch1 -p0
 
 %build
 %configure2_5x --with-xbase-libdir=%{_libdir}
