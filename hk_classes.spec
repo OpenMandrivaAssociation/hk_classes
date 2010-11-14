@@ -1,7 +1,7 @@
 %define LIBMAJ 15
 %define libname %mklibname %name %LIBMAJ
 %define develname %mklibname %name -d
-%define release %mkrel 9
+%define release %mkrel 10
 
 Summary:	GUI independent C++ database application libraries	
 Name:		hk_classes
@@ -39,7 +39,6 @@ firebird support is not available for x86_64
 %package	-n python-%{name}
 Summary:  	Python support for hk_classes
 Group: 		Development/Python
-%py_requires -d
 
 %description -n python-%{name}
 Python scripting support for hk_classes.
