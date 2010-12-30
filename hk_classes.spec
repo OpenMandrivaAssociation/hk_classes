@@ -1,7 +1,7 @@
 %define LIBMAJ 15
 %define libname %mklibname %name %LIBMAJ
 %define develname %mklibname %name -d
-%define release %mkrel 10
+%define release %mkrel 12
 
 Summary:	GUI independent C++ database application libraries	
 Name:		hk_classes
