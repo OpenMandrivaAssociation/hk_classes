@@ -115,7 +115,7 @@ EOF
 chrpath --delete $RPM_BUILD_ROOT%{_bindir}/*
 
 # (sb) fix the .la files
-perl -pi -e "s|-L$RPM_BUILD_DIR/%{name}-%{version}/hk_classes||g" $RPM_BUILD_ROOT%{_libdir}/%{name}/drivers/*.la
+perl -pi -e "s|-L%{_builddir}/%{name}-%{version}/hk_classes||g" $RPM_BUILD_ROOT%{_libdir}/%{name}/drivers/*.la
 
 # (sb) installed but not packaged
 rm -rf $RPM_BUILD_ROOT/usr/local
