@@ -1,0 +1,31 @@
+--- hk_sqlite3classes/sqlite/shell.c.str	2008-12-28 10:32:42.000000000 +0100
++++ hk_sqlite3classes/sqlite/shell.c	2008-12-28 10:34:35.000000000 +0100
+@@ -358,7 +358,7 @@
+     output_c_string(p->out, z);
+   }
+   if( bSep ){
+-    fprintf(p->out, p->separator);
++    fprintf(p->out, "%s", p->separator);
+   }
+ }
+ 
+@@ -1013,7 +1013,7 @@
+   }else
+ 
+   if( c=='h' && strncmp(azArg[0], "help", n)==0 ){
+-    fprintf(stderr,zHelp);
++    fprintf(stderr,"%s",zHelp);
+   }else
+ 
+   if( c=='i' && strncmp(azArg[0], "import", n)==0 && nArg>=3 ){
+--- hk_sqliteclasses/sqlite/shell.c.str	2008-12-28 10:29:24.000000000 +0100
++++ hk_sqliteclasses/sqlite/shell.c	2008-12-28 10:29:58.000000000 +0100
+@@ -692,7 +692,7 @@
+   }else
+ 
+   if( c=='h' && strncmp(azArg[0], "help", n)==0 ){
+-    fprintf(stderr,zHelp);
++    fprintf(stderr,"%s",zHelp);
+   }else
+ 
+   if( c=='i' && strncmp(azArg[0], "indices", n)==0 && nArg>1 ){
