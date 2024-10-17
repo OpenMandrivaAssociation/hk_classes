@@ -13,7 +13,7 @@ Source0:		http://hk-classes.sourceforge.net/hk_classes-%{version}.tar.bz2
 Patch0:		hk_classes-0.8.3-gcc43.patch
 Patch1:		hk_classes-0.8.3-fix-str-fmt.patch
 patch2:		hk_classes-0.8.3.unistd.patch
-Url:		http://hk-classes.sourceforge.net
+Url:		https://hk-classes.sourceforge.net
 BuildRequires:	fontconfig-devel
 BuildRequires:	mysql-devel 
 BuildRequires:  postgresql-devel 
