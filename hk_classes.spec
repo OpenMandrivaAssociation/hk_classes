@@ -14,6 +14,11 @@ Patch0:		hk_classes-0.8.3-gcc43.patch
 Patch1:		hk_classes-0.8.3-fix-str-fmt.patch
 patch2:		hk_classes-0.8.3.unistd.patch
 Url:		https://hk-classes.sourceforge.net
+BuildRequires:	autoconf
+BuildRequires:	automake
+BuildRequires:	libtool-base
+BuildRequires:	slibtool
+BuildRequires:	make
 BuildRequires:	fontconfig-devel
 BuildRequires:	mysql-devel 
 BuildRequires:  postgresql-devel 
